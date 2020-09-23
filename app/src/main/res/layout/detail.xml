@@ -4,15 +4,15 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
     <ImageView
+        android:layout_marginTop="10dp"
         android:id="@+id/imageview"
-        android:layout_width="250dp"
+        android:layout_width="330dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
       />
@@ -20,33 +20,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "NEW Text"
+        android:text = "title"
         android:id="@+id/title"
         android:textSize = "30dp"
         android:textColor = "#666666"
         android:layout_gravity="center"
         />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text = "hompage"
+            android:id = "@+id/homepage"
+            android:textSize= "20dp"
+            android:textColor = "#666666"
+            android:layout_gravity="center"/>
+
     <TextView
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "Student id"
+        android:text = "location"
         android:id="@+id/location"
         android:textSize="20dp"
         android:textColor="#666666"
         android:layout_gravity="center"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text = "Location"
-        android:id = "@+id/homepage"
-        android:textSize= "20dp"
-        android:textColor = "#666666"
-        android:layout_gravity="center"/>
+        <com.naver.maps.map.MapView
+            android:id="@+id/map_view"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="330dp"
+            android:layout_height="250dp" />
 
         <TextView
             android:id="@+id/overview"
@@ -56,10 +63,11 @@
             android:layout_marginTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Location"
+            android:text="overtext"
             android:textColor="#666666"
             android:textSize="24dp" />
 
     </LinearLayout>
 
 </ScrollView>
+

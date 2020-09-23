@@ -23,9 +23,17 @@
         </activity>
         <activity android:name=".SubActivity"></activity>
         <activity android:name=".IntentActivity"></activity>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="hnz9rrwxav" />
+
     </application>
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+
+
 </manifest>
 

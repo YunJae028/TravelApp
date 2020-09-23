@@ -90,6 +90,8 @@ public class ListViewAdapter extends BaseAdapter {
             it.putExtra("title",arItem.get(pos).getTitle());
             it.putExtra("contentId",arItem.get(pos).getContentId());
             it.putExtra("ivPhoto",arItem.get(pos).getFirstimage());
+            it.putExtra("mapx",arItem.get(pos).getMapx());
+            it.putExtra("mapy",arItem.get(pos).getMapy());
             context.startActivity(it);
         });
 
