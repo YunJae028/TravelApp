@@ -17,6 +17,7 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.geometry.Utmk;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -47,6 +48,7 @@ public class IntentActivity  extends AppCompatActivity implements OnMapReadyCall
     private MapView mapView;
    private static NaverMap naverMap;
     private Marker marker = new Marker();
+    GeoPoint out_pt;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -62,8 +64,14 @@ public class IntentActivity  extends AppCompatActivity implements OnMapReadyCall
         mapx = it.getDoubleExtra("mapx",0);
         mapy = it.getDoubleExtra("mapy",0);
 
-        Log.i("값", String.valueOf(mapx));
-        Log.i("값", String.valueOf(mapy));
+        GeoPoint in_pt = new GeoPoint(mapx,mapy);
+        out_pt = GeoTrans.convert(GeoTrans.GEO,GeoTrans.UTMK,in_pt);
+        Log.i("위치", String.valueOf(out_pt.x));
+        Log.i("위치", String.valueOf(out_pt.y));
+
+
+
+
         //marker.setPosition(new LatLng(it.getDoubleExtra("mapx",0), it.getDoubleExtra("mapy",0)));
         title.setText(it.getStringExtra("title"));
         AQuery aq = new AQuery(IntentActivity.this);
@@ -158,10 +166,14 @@ public class IntentActivity  extends AppCompatActivity implements OnMapReadyCall
     public void onMapReady(@NonNull NaverMap naverMap) {
 
         this.naverMap = naverMap;
-        CameraPosition cameraPosition = new CameraPosition(new LatLng(mapx,mapy),9);
+
+        Utmk utmk = new Utmk(out_pt.x, out_pt.y);
+        LatLng latLng = utmk.toLatLng();
+
+        CameraPosition cameraPosition = new CameraPosition(new LatLng(latLng.latitude,latLng.longitude),12);
         naverMap.setCameraPosition(cameraPosition);
 
-        marker.setPosition(new LatLng(mapx, mapx));
+        marker.setPosition(new LatLng(latLng.latitude, latLng.longitude));
         marker.setMap(naverMap);
     }
 
